@@ -73,11 +73,13 @@ else:
    st.text("Please upload the image")
     
 def main():
-    
-    feature_vector = encode(img)
-    caption = greedySearch(feature_vector) 
-    st.success("Hurray :)  we got the caption")
-    st.success(caption)
-
+    try:
+        feature_vector = encode(img)
+        caption = greedySearch(feature_vector) 
+        st.success("Hurray :)  we got the caption")
+        st.success(caption)
+    except:
+        st.text("Upload an image")
+        
 if __name__ == "__main__":              
     main()
