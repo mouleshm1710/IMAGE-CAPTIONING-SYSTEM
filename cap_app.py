@@ -30,7 +30,7 @@ st.write("""
          """
          ) 
 
-img_file = st.file_uploader("Please upload an Image file", type=["jpg", "png"])
+img_file = st.file_uploader('', type=["jpg", "png"])
 
 
 # function define
@@ -69,8 +69,12 @@ def greedySearch(photo):
       final = ' '.join(final)   
       return final 
     
-image = Image.open(img_file)
-st.image(image,use_column_width=True)
+if file is None:
+    st.text("Please upload an image file") 
+    
+else:
+    image = Image.open(img_file)
+    st.image(image,use_column_width=False)
 
 def main():
     feature_vector = encode(image)
