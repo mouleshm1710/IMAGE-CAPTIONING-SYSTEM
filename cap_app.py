@@ -10,9 +10,6 @@ import numpy as np
 from PIL import Image,ImageOps
 
 @st.cache(allow_output_mutation=True)
-def load_Model():
-    model = load_model('my_model_8268.h5')
-    return model
 
 cnn_model = load_model('my_model_cnn.h5')
 
@@ -68,17 +65,14 @@ def greedySearch(photo):
 
 
 def main():
-    with st.spinner('Model is being loaded..'):
-         model = load_Model()
+    st.spinner('Model is being loaded..')
+    model = load_model('my_model_8268.h5')
     img_file = st.file_uploader('', type=["jpg", "png"])
-    try:
+    if img_file is not None:
        img = Image.open(img_file)
        st.image(img,use_column_width=False)
     
-    except:
-       st.text("Please upload an image file") 
-          
-        
+         
     feature_vector = encode(img)
     caption = greedySearch(feature_vector) 
     st.success("Hurray :)  we got the caption")
