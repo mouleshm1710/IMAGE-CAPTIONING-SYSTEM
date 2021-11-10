@@ -70,7 +70,7 @@ if img_file is not None:
    st.image(img,use_column_width=False)
     
 else:
-   st.text("Please upload the image")
+   pass
     
 def main():
     try:
@@ -79,7 +79,7 @@ def main():
         st.success("Hurray :)  we got the caption")
         st.success(caption)
     except:
-        st.text("Upload an image")
+        st.text("Please upload an image")
         
 if __name__ == "__main__":              
     main()
