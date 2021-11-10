@@ -23,10 +23,12 @@ wordtoix = pickle.load(pickle_wi)
 pickle_iw = open("ixtoword.pkl", 'rb')
 ixtoword = pickle.load(pickle_iw)
 
-st.write("""
-         Image Captioner system
-         """,textColor="#ff2b2b"
-         ) 
+html_temp = """<div style ="background-color:blue;padding:13px"> 
+    <h1 style ="color:black;text-align:center;">Image Captioner App</h1> 
+    </div>"""
+
+# display the front end aspect
+st.markdown(html_temp, unsafe_allow_html = True)
 
 # function define
 def encode(image_path): 
