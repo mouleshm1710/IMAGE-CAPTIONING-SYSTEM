@@ -10,7 +10,6 @@ import numpy as np
 from PIL import Image,ImageOps
 
 @st.cache(allow_output_mutation=True)
-#with st.spinner('Model is being loaded..'):
 model = load_model('my_model_8268.h5')
 cnn_model = load_model('my_model_cnn.h5')
 
