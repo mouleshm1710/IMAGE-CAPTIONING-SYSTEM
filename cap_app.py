@@ -20,8 +20,8 @@ pickle_iw = open("ixtoword.pkl", 'rb')
 ixtoword = pickle.load(pickle_iw)
 
 
-st.spinner('Model is being loaded..')
-model = load_model('my_model_8268.h5')
+with st.spinner('Model is being loaded..'):
+     model = load_model('my_model_8268.h5')
 
 st.write("""
          Image Captioner system
