@@ -69,7 +69,7 @@ def greedySearch(photo):
       final = ' '.join(final)   
       return final 
     
-if file is None:
+if img_file is None:
     st.text("Please upload an image file") 
     
 else:
