@@ -25,7 +25,7 @@ ixtoword = pickle.load(pickle_iw)
 
 st.write("""
          Image Captioner system
-         """,textColor="#262730"
+         """,textColor="#ff2b2b"
          ) 
 
 # function define
