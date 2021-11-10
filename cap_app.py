@@ -20,6 +20,8 @@ pickle_iw = open("ixtoword.pkl", 'rb')
 ixtoword = pickle.load(pickle_iw)
 
 
+st.spinner('Model is being loaded..')
+model = load_model('my_model_8268.h5')
 
 st.write("""
          Image Captioner system
@@ -65,8 +67,6 @@ def greedySearch(photo):
 
 
 def main():
-    st.spinner('Model is being loaded..')
-    model = load_model('my_model_8268.h5')
     img_file = st.file_uploader('', type=["jpg", "png"])
     if img_file is not None:
        img = Image.open(img_file)
