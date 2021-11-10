@@ -30,9 +30,6 @@ st.write("""
          """
          ) 
 
-img_file = st.file_uploader('', type=["jpg", "png"])
-
-
 # function define
 def encode(image_path): 
     size = (224,224)    
@@ -69,14 +66,17 @@ def greedySearch(photo):
       final = ' '.join(final)   
       return final 
     
-if img_file is None:
-    st.text("Please upload an image file") 
-    
-else:
-    image = Image.open(img_file)
-    st.image(image,use_column_width=False)
+
 
 def main():
+    img_file = st.file_uploader('', type=["jpg", "png"])
+    if img_file is None:
+       st.text("Please upload an image file") 
+    
+    else:
+        image = Image.open(img_file)
+        st.image(image,use_column_width=False)
+        
     feature_vector = encode(image)
     caption = greedySearch(feature_vector) 
     st.success("Hurray :)  we got the caption")
