@@ -1,0 +1,5 @@
+numpy
+streamlit==1.1.0
+tensorflow
+keras
+pickle-mixin
