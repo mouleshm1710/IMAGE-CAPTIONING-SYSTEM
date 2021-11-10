@@ -23,9 +23,6 @@ wordtoix = pickle.load(pickle_wi)
 pickle_iw = open("ixtoword.pkl", 'rb')
 ixtoword = pickle.load(pickle_iw)
 
-
-
-
 st.write("""
          Image Captioner system
          """
@@ -67,15 +64,13 @@ def greedySearch(photo):
       final = ' '.join(final)   
       return final 
     
-
-
-def main():
-    img_file = st.file_uploader('', type=["jpg", "png"])
-    if img_file is not None:
-       img = Image.open(img_file)
-       st.image(img,use_column_width=False)
+img_file = st.file_uploader('', type=["jpg", "png"])
+if img_file is not None:
+   img = Image.open(img_file)
+   st.image(img,use_column_width=False)
     
-         
+def main():
+    
     feature_vector = encode(img)
     caption = greedySearch(feature_vector) 
     st.success("Hurray :)  we got the caption")
