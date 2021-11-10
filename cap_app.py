@@ -23,8 +23,8 @@ wordtoix = pickle.load(pickle_wi)
 pickle_iw = open("ixtoword.pkl", 'rb')
 ixtoword = pickle.load(pickle_iw)
 
-html_temp = """<div style ="background-color:blue;padding:13px"> 
-    <h1 style ="color:#ff0099;text-align:center;">Image Captioner App</h1> 
+html_temp = """<div style ="background-color:#ff0099;padding:13px"> 
+    <h1 style ="color:black;text-align:center;">Image Captioner App</h1> 
     </div>"""
 
 # display the front end aspect
