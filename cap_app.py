@@ -11,11 +11,10 @@ from PIL import Image,ImageOps
 
 @st.cache(allow_output_mutation=True)
 def load_Model():
-    model = load_model('/content/my_model2.hdf5')
+    model = load_model('my_model_8268.h5')
     return model
 with st.spinner('Model is being loaded..'):
      model=load_Model()
-model = load_Model('my_model_8268.h5')
 cnn_model = load_model('my_model_cnn.h5')
 
 pickle_wi = open("wordtoix.pkl", 'rb')
