@@ -74,10 +74,10 @@ def main():
        st.text("Please upload an image file") 
     
     else:
-        image = Image.open(img_file)
-        st.image(image,use_column_width=False)
+        img = Image.open(img_file)
+        st.image(img,use_column_width=False)
         
-    feature_vector = encode(image)
+    feature_vector = encode(img)
     caption = greedySearch(feature_vector) 
     st.success("Hurray :)  we got the caption")
     st.success(caption)
