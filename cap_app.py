@@ -69,6 +69,9 @@ if img_file is not None:
    img = Image.open(img_file)
    st.image(img,use_column_width=False)
     
+else:
+   st.text("Please upload the image")
+    
 def main():
     
     feature_vector = encode(img)
