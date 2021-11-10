@@ -73,7 +73,7 @@ image = Image.open(img_file)
 st.image(image,use_column_width=True)
 
 def main():
-    feature_vector = encode(img_file)
+    feature_vector = encode(image)
     caption = greedySearch(feature_vector) 
     st.success("Hurray :)  we got the caption")
     st.success(caption)
