@@ -11,16 +11,16 @@ from PIL import Image,ImageOps
 
 @st.cache(allow_output_mutation=True)
 def load_Model():
-    model = load_model('my_model_8268.h5')
+    model = load_model('my_model_8214_latest.h5')
     return model
 with st.spinner('Model is being loaded..'):
      model=load_Model()
 cnn_model = load_model('my_model_cnn.h5')
 
-pickle_wi = open("wordtoix.pkl", 'rb')
+pickle_wi = open("wordtoixlatest.pkl", 'rb')
 wordtoix = pickle.load(pickle_wi)
 
-pickle_iw = open("ixtoword.pkl", 'rb')
+pickle_iw = open("ixtowordlatest.pkl", 'rb')
 ixtoword = pickle.load(pickle_iw)
 
 html_temp = """<div style ="background-color:#ff0099;padding:13px"> 
@@ -66,7 +66,7 @@ def greedySearch(photo):
       final = ' '.join(final)   
       return final 
     
-img_file = st.file_uploader('', type=["jpg", "png"])
+img_file = st.file_uploader('', type=["jpg", "png","jpeg"])
 if img_file is not None:
    img = Image.open(img_file)
    st.image(img,use_column_width=False)
