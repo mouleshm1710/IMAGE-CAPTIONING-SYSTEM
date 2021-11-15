@@ -7,13 +7,14 @@ from tensorflow.keras.utils import to_categorical
 from keras.preprocessing.sequence import pad_sequences
 import pickle
 import numpy as np
-
+from PIL import Image,ImageOps
 
 @st.cache(allow_output_mutation=True)
 def load_Model():
     model = load_model('my_model_8268.h5')
     return model
-
+with st.spinner('Model is being loaded..'):
+     model=load_Model()
 cnn_model = load_model('my_model_cnn.h5')
 
 pickle_wi = open("wordtoix.pkl", 'rb')
@@ -22,25 +23,22 @@ wordtoix = pickle.load(pickle_wi)
 pickle_iw = open("ixtoword.pkl", 'rb')
 ixtoword = pickle.load(pickle_iw)
 
-with st.spinner('Model is being loaded..'):
-     model = load_Model()
+html_temp = """<div style ="background-color:#ff0099;padding:13px"> 
+    <h1 style ="color:black;text-align:center;">Image Captioner App</h1> 
+    </div>"""
 
-st.write("""
-         Image Captioner system
-         """
-         ) 
-
-img_file = st.file_uploader("Please upload an Image file", type=["jpg", "png"])
-
+# display the front end aspect
+st.markdown(html_temp, unsafe_allow_html = True)
 
 # function define
 def encode(image_path): 
-    img = load_img(image_path, target_size=(224,224))
-    x = img_to_array(img)   # convert to numpy array matrix
-    x = np.expand_dims(x, axis=0) # expanding the 3rd dimension (1,224,224)
-    x = preprocess_input(x)  # pixel values transform (NORMALIZATION) 
-    fea_vec = cnn_model.predict(x) # returns the feature vector
-    return fea_vec
+    size = (224,224)    
+    x = ImageOps.fit(image_path,size, Image.ANTIALIAS)
+    y = np.asarray(x)
+    y = np.expand_dims(y, axis=0) # expanding the 3rd dimension (1,224,224)
+    y = preprocess_input(y)  # pixel values transform (NORMALIZATION) 
+    fea_vec = cnn_model.predict(y) # returns the feature vector
+    return fea_vec 
 
 max_length = 20
 def greedySearch(photo):                                                               
@@ -67,11 +65,23 @@ def greedySearch(photo):
       final = final[1:-1]
       final = ' '.join(final)   
       return final 
-
-feature_vector = encode(img_file)
-caption = greedySearch(feature_vector) 
-st.success("Hurray :)  we got the caption")
-st.success(caption)
-
+    
+img_file = st.file_uploader('', type=["jpg", "png"])
+if img_file is not None:
+   img = Image.open(img_file)
+   st.image(img,use_column_width=False)
+    
+else:
+   pass
+    
+def main():
+    try:
+        feature_vector = encode(img)
+        caption = greedySearch(feature_vector) 
+        st.success("Hurray :)  we got the caption")
+        st.success(caption)
+    except:
+        st.text("Please upload an image")
+        
 if __name__ == "__main__":              
     main()
