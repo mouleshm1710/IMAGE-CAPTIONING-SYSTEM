@@ -4,7 +4,7 @@ from tensorflow.keras.applications.resnet50 import preprocess_input
 from tensorflow.keras.preprocessing.image import load_img, img_to_array 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import to_categorical 
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
 import numpy as np
 from PIL import Image,ImageOps
