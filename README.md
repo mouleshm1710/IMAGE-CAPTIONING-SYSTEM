@@ -19,3 +19,7 @@ User Interface: Created a user-friendly interface with Streamlit, allowing users
 Deployment: Hosted the model on Streamlit Cloud, enabling direct user interaction and showcasing my ability to bridge machine learning with practical applications.
 
 This project solidified my expertise in deep learning and machine learning deployment, positioning me as a strong candidate in data science
+
+### Predictions Screenshot:
+
+![alt_text](captions_prediction_screenshot.png)
